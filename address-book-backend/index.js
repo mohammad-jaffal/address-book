@@ -11,7 +11,7 @@ var express = require('express'),
 
 const mongoose = require('mongoose');
 
-
+// const contactRoutes = require('./api/routes/contactRoutes');
 
 const dbURi = 'mongodb+srv://admin:admin123@cluster0.qadq5.mongodb.net/address-book-db?retryWrites=true&w=majority';
 mongoose.connect(dbURi, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -42,13 +42,19 @@ app.use(function(req, res, next) {
     next();
   }
 });
-var routes = require('./api/routes/userRoutes');
-routes(app);
+var tRoutes = require('./api/routes/testRoutes');
+var uRoutes = require('./api/routes/userRoutes');
+tRoutes(app);
+uRoutes(app);
+
+
+
+
+
 
 app.use(function(req, res) {
   res.status(404).send({ url: req.originalUrl + ' not found' })
 });
-
 
 
 module.exports = app;
