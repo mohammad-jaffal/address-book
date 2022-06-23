@@ -42,9 +42,9 @@ app.use(function(req, res, next) {
     next();
   }
 });
-var tRoutes = require('./api/routes/testRoutes');
+var cRoutes = require('./api/routes/contactRoutes');
 var uRoutes = require('./api/routes/userRoutes');
-tRoutes(app);
+cRoutes(app);
 uRoutes(app);
 
 
