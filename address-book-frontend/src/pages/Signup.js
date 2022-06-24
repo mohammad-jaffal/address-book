@@ -4,7 +4,9 @@ import React from "react";
 
 const Signup = () => {
 
-
+    function signupFunction (){
+        document.location.href="./home";
+    }
 
     return (
         <div className='body-container'>
@@ -26,7 +28,7 @@ const Signup = () => {
                     <input type="password" id="su_confirm_password" className="form-control" required />
                 </div>
                 <div className="form-group">
-                    <button className='li-btn'>SignUp</button>
+                    <button className='li-btn' onClick={()=>{signupFunction()}}>SignUp</button>
                 </div>
                 <div className="form-group">
                     <a href='./'>Already have account?</a>
