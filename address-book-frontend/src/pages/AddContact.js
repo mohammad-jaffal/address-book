@@ -3,14 +3,14 @@ import Navbar from "../components/Navbar";
 
 
 
-const Home = () => {
+const AddContact = () => {
     return (
         <div className='body-container'>
             <Navbar/>
-            home
+            add contact
         </div>
     );
 };
 
 
-export default Home;
+export default AddContact;

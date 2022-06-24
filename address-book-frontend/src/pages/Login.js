@@ -25,7 +25,7 @@ const Login = () => {
                     <button className='li-btn' onClick={()=>{loginFunction()}}>Login</button>
                 </div>
                 <div className="form-group">
-                    <a href='./signup'>Don't have account?</a>
+                    <a href='./signup'>Create account</a>
                 </div>
             </div>
         </div>
