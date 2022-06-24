@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 
 const AddContact = () => {
     return (
-        <div className='body-container'>
+        <div className='global-container'>
             <Navbar/>
             add contact
         </div>

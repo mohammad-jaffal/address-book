@@ -1,13 +1,33 @@
 import React from "react";
+import ContactItem from "../components/ContactItem";
 import Navbar from "../components/Navbar";
 
 
 
 const Home = () => {
+
+
+
+
+
+
     return (
-        <div className='body-container'>
+        <div className='global-container'>
             <Navbar/>
-            home
+            <div className="home-body-container">
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+            </div>
         </div>
     );
 };

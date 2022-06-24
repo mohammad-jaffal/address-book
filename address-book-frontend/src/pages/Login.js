@@ -9,7 +9,7 @@ const Login = () => {
     }
 
     return (
-        <div className='body-container'>
+        <div className='global-container'>
             <div id="login_form" className="login-form-container">
                 {/* go back to previous page if he cancels login */}
 

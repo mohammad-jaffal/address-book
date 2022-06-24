@@ -9,7 +9,7 @@ const Signup = () => {
     }
 
     return (
-        <div className='body-container'>
+        <div className='global-container'>
             <div id="login_form" className="login-form-container">
                 <div className="form-group">
                     <label>Name:</label>
