@@ -8,13 +8,22 @@ const Home = () => {
 
 
 
-
-
-
     return (
         <div className='global-container'>
             <Navbar/>
             <div className="home-body-container">
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
+                <ContactItem/>
                 <ContactItem/>
                 <ContactItem/>
                 <ContactItem/>
