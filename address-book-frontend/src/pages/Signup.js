@@ -1,5 +1,4 @@
-// import React from "react";
-import React, { useState, useEffect } from 'react';
+import React from "react";
 
 
 
@@ -30,7 +29,7 @@ const Signup = () => {
                     <button className='li-btn'>SignUp</button>
                 </div>
                 <div className="form-group">
-                    <a href=''>Already have account?</a>
+                    <a href='./'>Already have account?</a>
                 </div>
             </div>
         </div>

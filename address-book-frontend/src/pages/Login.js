@@ -1,6 +1,4 @@
-// import React from "react";
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
 
 
 
@@ -25,7 +23,7 @@ const Login = () => {
                     <button className='li-btn' onClick={()=>{}}>Login</button>
                 </div>
                 <div className="form-group">
-                    <a href=''>Don't have account?</a>
+                    <a href='./signup'>Don't have account?</a>
                 </div>
             </div>
         </div>
