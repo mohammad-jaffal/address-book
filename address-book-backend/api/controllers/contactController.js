@@ -24,3 +24,14 @@ exports.getContactsByUserId = (req, res) => {
             console.log(err);
         })
   };
+
+  exports.deleteContact = (req, res) => {
+    const contact_id = req.body.contact_id;
+    Contact.find({contact_id}).deleteOne()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+  };
