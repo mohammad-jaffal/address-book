@@ -14,10 +14,10 @@ function viewmapFunction(){
     return (
         <div className='contact-item'>
             <div className="info-container">
-                <p className="contact-name">Alaa Taweel</p>
+                <p className="contact-name">Contact name</p>
                 <p>📞 03 306090</p>
-                <p>✉️ alaataweel@gmail.com</p>
-                <p>🗿 dawle</p>
+                <p>✉️ contact@gmail.com</p>
+                <p>🗿 status</p>
             </div>
             <div className="location-container">
                 <i className="delete-icon">❌</i>
