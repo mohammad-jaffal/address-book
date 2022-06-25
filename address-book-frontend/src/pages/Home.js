@@ -6,7 +6,8 @@ import Navbar from "../components/Navbar";
 
 const Home = () => {
 
-
+    const token = localStorage.getItem('token');
+    console.log("home "+ token);
 
     return (
         <div className='global-container'>

@@ -22,29 +22,17 @@ const Login = () => {
             await axios.post(`http://localhost:3000/auth/sign_in`, params, {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}).then(res => {
                 // if login
                 if (res['status'] == 200) {
-                    console.log('noice')
                     // save access token in local storage for later use
-                    // localStorage.setItem('token', res.data['access_token'])
-                    // document.location.href = '/';
+                    localStorage.setItem('token', res.data['token'])
+                    document.location.href = "./home";
                 }
             })
                 .catch(err => {
-                    console.log(err.response.data)
+                    alert(err.response.data['message']);
                 })
 
         }
-
-
-
-
-
-
-
-
-
-
-
-        // document.location.href = "./home";
+ 
     }
 
     return (
