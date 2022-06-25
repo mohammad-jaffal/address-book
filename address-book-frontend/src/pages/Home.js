@@ -8,92 +8,94 @@ import axios from 'axios';
 
 const Home = () => {
 
-    // const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     // console.log("home " + token);
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QzQHRlc3QuY29tIiwiZnVsbE5hbWUiOiJ0ZXN0MyIsIl9pZCI6IjYyYjcwYWU4ZWQ4MDVjOWNkMjA5ZTA4ZCIsImlhdCI6MTY1NjE2NDg3M30.RsB2jEIMKYJVVR2bmp7z7aGIPQp4iW5ezkDlgqLU4OM'
-    
+
+
+    const [user_id, setUserId] = useState('');
+    const [contacts, setContacts] = useState('');
+
+
     // check if user logged in via jwt controller
     const validateUser = async () => {
         // check if token is still legit
         await axios("http://localhost:3000/profile", {
-          method: 'POST',
-          headers: {
-            Authorization: 'JWT ' + token,
-            Accept: 'application/x-www-form-urlencoded',
-          },
-    
+            method: 'POST',
+            headers: {
+                Authorization: 'JWT ' + token,
+                Accept: 'application/x-www-form-urlencoded',
+            },
+
         }).then(res => {
-            
+
             if (res['status'] == 200) {
-                console.log(res.data)
+                setUserId(res.data['_id']);
             }
         })
             .catch(err => {
-                console.log(err);
+                document.location.href = "./";
             })
+    }
 
+    const fetchContacts = async () => {
+        try {
+            const params = new URLSearchParams();
+            params.append('user_id', user_id);
 
-      }
+            await axios.post(`http://localhost:3000/get-contacts`,
+                params,
+                { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
+            ).then(res => {
 
+                // if login
+                if (res['status'] == 200) {
+                    setContacts(res.data);
 
+                }
+            })
+                .catch(err => {
+                    alert(err.response.data['message']);
+                })
 
+        }
+        catch {
 
-    // async function validateUser() {
-    //     await axios.post(`http://localhost:3000/tasks`,
-    //         {
-    //             'Content-Type': 'application/x-www-form-urlencoded',
-    //             'Authorization': 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QzQHRlc3QuY29tIiwiZnVsbE5hbWUiOiJ0ZXN0MyIsIl9pZCI6IjYyYjcwYWU4ZWQ4MDVjOWNkMjA5ZTA4ZCIsImlhdCI6MTY1NjE2NDg3M30.RsB2jEIMKYJVVR2bmp7z7aGIPQp4iW5ezkDlgqLU4OM',
+        }
+        // check if token is still legit
 
-    //         }
-    //     ).then(res => {
-    //         console.log(res.data)
-    //         if (res['status'] == 200) {
+    }
 
-    //         }
-    //     })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // }
 
 
     useEffect(() => {
         validateUser();
+        // console.log(user_id);
+        fetchContacts();
     }, []);
 
 
+    try {
+        return (
+            <div className='global-container'>
+                <Navbar />
+                <div className="home-body-container">
 
-    return (
-        <div className='global-container'>
-            <Navbar />
-            <div className="home-body-container">
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
-                <ContactItem />
+
+                    {contacts.map((value, index) => {
+                        return (
+                            <ContactItem key={index} />
+                        )
+                    })}
+
+                </div>
             </div>
-        </div>
-    );
+        )
+    }
+    catch (err) {
+        // console.log(err)
+        // show loading sign while the questions are being loaded
+        return (<div className="surveys-container">Loading...</div>);
+      }
 
 };
 
