@@ -87,8 +87,17 @@ const Home = () => {
             .then(res => {
                 // if login
                 if (res['status'] == 200) {
-                    alert('done');
-                    document.location.reload();
+
+                    // document.location.reload();
+                    var temp = [];
+                    for(var i = 0 ; i < contacts.length ; i++){
+                        if(contacts[i]['_id']!=c_id){
+                            temp[temp.length] = contacts[i];
+                        }
+                        setContacts(temp);
+                        setFilteredContacts(temp);
+                    }
+
                 }
             })
             .catch(err => {
@@ -107,10 +116,10 @@ const Home = () => {
         setFilteredContacts([])
         for (var contact of contacts) {
             if (
-                contact.name.includes(filter_input.current.value)
-                || contact.email.includes(filter_input.current.value)
-                || contact.phone_number.includes(filter_input.current.value)
-                || contact.status.includes(filter_input.current.value)
+                contact.name.toLowerCase().includes(filter_input.current.value.toLowerCase())
+                || contact.email.toLowerCase().includes(filter_input.current.value.toLowerCase())
+                || contact.phone_number.toLowerCase().includes(filter_input.current.value.toLowerCase())
+                || contact.status.toLowerCase().includes(filter_input.current.value.toLowerCase())
             ) {
                 if (contact in temp) { } else {
                     temp[temp.length] = contact;
@@ -133,6 +142,7 @@ const Home = () => {
         // console.log(user_id);
         validateUser();
         fetchContacts();
+        console.log(contacts);
     }, [user_id]);
 
     try {
