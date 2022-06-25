@@ -28,7 +28,7 @@ const Signup = () => {
                             // if login
                             if (res['status'] == 200) {
                                 // save access token in local storage for later use
-                                localStorage.setItem('token', res.data['token'])
+                                localStorage.setItem('token', res.data['token']);
                                 document.location.href = "./home";
                             }
                         })

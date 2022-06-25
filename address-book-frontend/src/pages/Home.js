@@ -12,8 +12,10 @@ const Home = () => {
     // console.log("home " + token);
 
 
+
     const [user_id, setUserId] = useState('');
     const [contacts, setContacts] = useState('');
+
 
 
     // check if user logged in via jwt controller
@@ -37,6 +39,8 @@ const Home = () => {
             })
     }
 
+
+
     const fetchContacts = async () => {
         try {
             const params = new URLSearchParams();
@@ -50,7 +54,7 @@ const Home = () => {
                 // if login
                 if (res['status'] == 200) {
                     setContacts(res.data);
-
+                    // console.log(res.data);
                 }
             })
                 .catch(err => {
@@ -58,32 +62,35 @@ const Home = () => {
                 })
 
         }
-        catch {
-
+        catch (err) {
+            // console.log('henlo');
         }
         // check if token is still legit
-
     }
 
 
-
     useEffect(() => {
-        validateUser();
         // console.log(user_id);
+        validateUser(); 
         fetchContacts();
-    }, []);
-
+    }, [user_id]);
 
     try {
         return (
             <div className='global-container'>
                 <Navbar />
                 <div className="home-body-container">
-
-
                     {contacts.map((value, index) => {
                         return (
-                            <ContactItem key={index} />
+                            <ContactItem
+                                key={index}
+                                name={value['name']}
+                                phone={value['phone_number']}
+                                email={value['email']}
+                                status={value['status']}
+                                contact_id={value['_id']}
+                                location={value['location']}
+                            />
                         )
                     })}
 
@@ -91,11 +98,17 @@ const Home = () => {
             </div>
         )
     }
+
     catch (err) {
         // console.log(err)
         // show loading sign while the questions are being loaded
-        return (<div className="surveys-container">Loading...</div>);
-      }
+        return (<div className='global-container'>
+            <Navbar />
+            <div className="home-body-container">
+                <div className="surveys-container">Loading...</div>
+            </div>
+        </div>)
+    }
 
 };
 

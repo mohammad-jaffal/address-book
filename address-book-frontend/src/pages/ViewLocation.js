@@ -1,4 +1,4 @@
-import { React, useMemo } from "react";
+import { React, useMemo, useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
@@ -26,7 +26,14 @@ export default ViewLocation;
 
 
 function Map() {
-    const center = useMemo(()=>({ lat: 33.888630, lng: 35.422281 }), []);
+    var contact_lng = Number(localStorage.getItem('lng'));
+    var contact_lat = Number(localStorage.getItem('lat'));
+
+    console.log(contact_lng + ' - ' + contact_lat);
+
+    const center = useMemo(() => ({ lat: 33.888630, lng: 35.422281 }), []);
+
+
     return (
         <div className='global-container'>
             <Navbar />
@@ -36,11 +43,12 @@ function Map() {
                     center={center}
                     mapContainerClassName="map-container"
                 >
+
                     <Marker
-                        position={{ lat: 33.344584, lng: 35.422281 }}
+                        position={{ lat: contact_lat, lng: contact_lng }}
                     />
                 </GoogleMap>
-                
+
             </div>
         </div>
     );
