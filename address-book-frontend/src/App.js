@@ -6,7 +6,7 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 import AddContact from './pages/AddContact';
 import ViewLocation from './pages/ViewLocation';
-import PickLocation from './pages/PickLocation';
+import PickLocation from './components/PickLocation';
 
 function App() {
   return (

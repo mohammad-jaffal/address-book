@@ -1,5 +1,5 @@
 import { React, useMemo, useState, useEffect, useRef } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "./Navbar";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
 

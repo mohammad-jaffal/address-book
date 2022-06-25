@@ -1,7 +1,7 @@
 import { React, useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import axios from 'axios';
-import PickLocation from "./PickLocation";
+import PickLocation from "../components/PickLocation";
 
 
 

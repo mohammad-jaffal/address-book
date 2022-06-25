@@ -1,11 +1,43 @@
 import { React, useMemo, useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import axios from 'axios';
 
 
 
 const ViewLocation = () => {
     const { isLoaded } = useLoadScript({ googleMapsApiKey: "AIzaSyBS8VZXIVu9EOghzUMzzI9kwxq92G7Ckb4" });
+
+
+
+    const token = localStorage.getItem('token');
+
+
+    // check if user logged in via jwt controller
+    const validateUser = async () => {
+        // check if token is still legit
+        await axios("http://localhost:3000/profile", {
+            method: 'POST',
+            headers: {
+                Authorization: 'JWT ' + token,
+                Accept: 'application/x-www-form-urlencoded',
+            },
+
+        }).then(res => {
+
+            if (res['status'] == 200) {
+                console.log("legit")
+            }
+        })
+            .catch(err => {
+                document.location.href = "./";
+            })
+    }
+
+    useEffect(() => {
+        validateUser();
+    }, []);
+
 
     while (!isLoaded) {
         return (

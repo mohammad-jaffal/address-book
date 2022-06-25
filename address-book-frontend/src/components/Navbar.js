@@ -2,6 +2,7 @@ import React from "react";
 
 const Navbar = () => {
 
+    
 
     function logoutFunction() {
         localStorage.setItem('token', null);
