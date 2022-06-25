@@ -20,20 +20,29 @@ const Signup = () => {
                 params.append('email', email);
                 params.append('password', password);
 
-                // const params = new URLSearchParams();
-                // params.append('email', email);
-                // params.append('password', password);
-                await axios.post(`http://localhost:3000/auth/register`, params, { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }).then(res => {
+                await axios.post(`http://localhost:3000/auth/register`, params, { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }).then(async res => {
                     // if login
                     if (res['status'] == 200) {
-                        console.log('noice');
+
+                        await axios.post(`http://localhost:3000/auth/sign_in`, params, { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }).then(res => {
+                            // if login
+                            if (res['status'] == 200) {
+                                // save access token in local storage for later use
+                                localStorage.setItem('token', res.data['token'])
+                                document.location.href = "./home";
+                            }
+                        })
+                            .catch(err => {
+                                alert(err.response.data['message']);
+                            })
+
                         // save access token in local storage for later use
                         // localStorage.setItem('token', res.data['token'])
                         // document.location.href = "./home";
                     }
                 })
                     .catch(err => {
-                        alert(err.response.data['message']);
+                        alert("Something went wrong :(");
                     })
 
             }

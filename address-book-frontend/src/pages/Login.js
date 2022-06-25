@@ -16,9 +16,6 @@ const Login = () => {
             params.append('email', email);
             params.append('password', password);
 
-            // const params = new URLSearchParams();
-            // params.append('email', email);
-            // params.append('password', password);
             await axios.post(`http://localhost:3000/auth/sign_in`, params, {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}).then(res => {
                 // if login
                 if (res['status'] == 200) {
