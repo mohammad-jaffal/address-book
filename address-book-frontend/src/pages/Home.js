@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import ContactItem from "../components/ContactItem";
 import Navbar from "../components/Navbar";
 import axios from 'axios';
@@ -13,11 +13,11 @@ const Home = () => {
 
 
 
-    const [user_id, setUserId] = useState('');
-    const [contacts, setContacts] = useState('');
-    const [temp_contacts, setTempContacts] = useState('');
+    var [user_id, setUserId] = useState('');
+    var [contacts, setContacts] = useState('');
+    var [filtered_contacts, setFilteredContacts] = useState('');
 
-
+    const filter_input = useRef();
 
     // check if user logged in via jwt controller
     const validateUser = async () => {
@@ -55,7 +55,7 @@ const Home = () => {
                 // if login
                 if (res['status'] == 200) {
                     setContacts(res.data);
-                    setTempContacts(res.data);
+                    setFilteredContacts(res.data);
                     // console.log(res.data);
                 }
             })
@@ -88,8 +88,7 @@ const Home = () => {
                 // if login
                 if (res['status'] == 200) {
                     alert('done');
-                    console.log(res)
-                    // document.location.reload();
+                    document.location.reload();
                 }
             })
             .catch(err => {
@@ -97,6 +96,37 @@ const Home = () => {
             })
 
     }
+
+
+
+
+
+
+    function filterContacts() {
+        var temp = []
+        setFilteredContacts([])
+        for (var contact of contacts) {
+            if (
+                contact.name.includes(filter_input.current.value)
+                || contact.email.includes(filter_input.current.value)
+                || contact.phone_number.includes(filter_input.current.value)
+                || contact.status.includes(filter_input.current.value)
+            ) {
+                if (contact in temp) { } else {
+                    temp[temp.length] = contact;
+                    setFilteredContacts(temp)
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
 
 
     useEffect(() => {
@@ -109,8 +139,10 @@ const Home = () => {
         return (
             <div className='global-container'>
                 <Navbar />
+                <input type={"text"} ref={filter_input} onInput={() => { filterContacts() }} />
                 <div className="home-body-container">
-                    {contacts.map((value, index) => {
+
+                    {filtered_contacts.map((value, index) => {
                         return (
                             <ContactItem
                                 key={index}

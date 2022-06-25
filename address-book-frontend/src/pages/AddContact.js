@@ -39,11 +39,6 @@ const AddContact = () => {
     }
 
 
-    // contact_lat.value = localStorage.getItem('c_lat');
-    // contact_lat.value = localStorage.getItem('c_lng');
-
-    // contact_lat.current.value = 'c_lat';
-    // contact_lng.current.value = 'c_lng';
     useEffect(() => {
         contact_lat.current.value = localStorage.getItem('c_lat');
         contact_lng.current.value = localStorage.getItem('c_lng');
@@ -73,7 +68,7 @@ const AddContact = () => {
                 .then(res => {
                     // if login
                     if (res['status'] == 200) {
-                        alert('done');
+                        console.log("success");
                     }
                 })
                 .catch(err => {
