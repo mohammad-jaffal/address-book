@@ -1,6 +1,7 @@
 import { React, useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import axios from 'axios';
+import PickLocation from "./PickLocation";
 
 
 
@@ -40,15 +41,13 @@ const AddContact = () => {
 
 
     useEffect(() => {
-        contact_lat.current.value = localStorage.getItem('c_lat');
-        contact_lng.current.value = localStorage.getItem('c_lng');
     }, [contact_lat, contact_lng]);
 
     async function addContactFunction() {
-        console.log(contact_name.current.value);
+        // console.log(contact_name.current.value);
         if (contact_name.current.value == "" || contact_phone.current.value == "" || contact_email.current.value == "" || contact_lat.current.value == "") {
             alert('Fill all!');
-            console.log(contact_status.current.value);
+            // console.log(contact_status.current.value);
         } else {
 
 
@@ -75,19 +74,6 @@ const AddContact = () => {
                     alert(err.response.data['message']);
                 })
 
-
-
-
-
-
-
-
-
-
-
-            localStorage.setItem('c_lat', '');
-            localStorage.setItem('c_lng', '');
-            document.location.reload();
         }
 
     }
@@ -96,7 +82,7 @@ const AddContact = () => {
 
     useEffect(() => {
         validateUser();
-        console.log(user_id);
+        // console.log(user_id);
     }, [user_id]);
 
 
@@ -104,7 +90,7 @@ const AddContact = () => {
     return (
         <div className='global-container'>
             <Navbar />
-            <div className="addcontact-body-container">
+            <div className="addcontact-body-container" id="add_body">
                 <div className="addcontact-form-container">
                     <div className="form-group">
                         <label>Name:</label>
@@ -130,15 +116,19 @@ const AddContact = () => {
                     </div>
                     <div className="form-group">
                         <label>Location:</label>
-                        <input ref={contact_lat} className="location-show" readOnly />
-                        <input ref={contact_lng} className="location-show" readOnly />
-                        <button onClick={() => { document.location.href = '/pick-location' }}>Pick</button>
+                        <input ref={contact_lat} id={'show_lat'} className="location-show" readOnly />
+                        <input ref={contact_lng} id={'show_lng'} className="location-show" readOnly />
+                        <button onClick={() => {
+                            document.getElementById("add_body").style.display = "none";
+                            document.getElementById("map_container").style.display = "block";
+                        }}>Pick</button>
                     </div>
                     <div className="form-group">
                         <button onClick={() => { addContactFunction() }}>AddContact</button>
                     </div>
                 </div>
             </div>
+            <PickLocation/>
         </div>
     );
 };

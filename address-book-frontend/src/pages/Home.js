@@ -11,8 +11,6 @@ const Home = () => {
     const token = localStorage.getItem('token');
     // console.log("home " + token);
 
-
-
     var [user_id, setUserId] = useState('');
     var [contacts, setContacts] = useState('');
     var [filtered_contacts, setFilteredContacts] = useState('');
@@ -52,11 +50,9 @@ const Home = () => {
                 { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
             ).then(res => {
 
-                // if login
                 if (res['status'] == 200) {
                     setContacts(res.data);
                     setFilteredContacts(res.data);
-                    // console.log(res.data);
                 }
             })
                 .catch(err => {
@@ -65,13 +61,9 @@ const Home = () => {
 
         }
         catch (err) {
-            // console.log('henlo');
+            console.log(err);
         }
-        // check if token is still legit
     }
-
-
-
 
 
 
@@ -88,7 +80,6 @@ const Home = () => {
                 // if login
                 if (res['status'] == 200) {
 
-                    // document.location.reload();
                     var temp = [];
                     for(var i = 0 ; i < contacts.length ; i++){
                         if(contacts[i]['_id']!=c_id){
@@ -97,7 +88,6 @@ const Home = () => {
                         setContacts(temp);
                         setFilteredContacts(temp);
                     }
-
                 }
             })
             .catch(err => {
@@ -105,8 +95,6 @@ const Home = () => {
             })
 
     }
-
-
 
 
 
@@ -130,16 +118,7 @@ const Home = () => {
     }
 
 
-
-
-
-
-
-
-
-
     useEffect(() => {
-        // console.log(user_id);
         validateUser();
         fetchContacts();
         console.log(contacts);
@@ -173,8 +152,6 @@ const Home = () => {
     }
 
     catch (err) {
-        // console.log(err)
-        // show loading sign while the questions are being loaded
         return (<div className='global-container'>
             <Navbar />
             <div className="home-body-container">

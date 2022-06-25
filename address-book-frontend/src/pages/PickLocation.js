@@ -9,13 +9,9 @@ const PickLocation = () => {
 
     while (!isLoaded) {
         return (
-            <div className='global-container'>
-                <Navbar />
-                <div>Loading...</div>
-            </div>
+            <div/>
         );
     }
-
     return (
         <Map />
     );
@@ -26,34 +22,32 @@ export default PickLocation;
 
 function Map() {
 
+    
     const center = useMemo(() => ({ lat: 33.888630, lng: 35.422281 }), []);
     function saveLocation(c_lat, c_lng) {
-        console.log(c_lat)
-        console.log(c_lng)
-        localStorage.setItem('c_lat', c_lat);
-        localStorage.setItem('c_lng', c_lng);
-        document.location.href='/add-contact';
-        
-       }
+ 
+        document.getElementById("show_lat").setAttribute('value', c_lat);
+        document.getElementById("show_lng").setAttribute('value', c_lng);
+
+        document.getElementById("map_container").style.display = "none";
+        document.getElementById("add_body").style.display = "flex";
+
+
+    }
 
     return (
-        <div className='global-container'>
-            <Navbar />
-            <div className="viewmap-body-container">
-                <GoogleMap
-                    zoom={9}
-                    center={center}
-                    mapContainerClassName="map-container"
-                    onClick={(event) => {
-                        saveLocation(event.latLng.lat(), event.latLng.lng())
-                        // console.log("latitide = ", event.latLng.lat());
-                        // console.log("longitude = ", event.latLng.lng());
-                    }}
-                >
+        <div className="viewmap-body-container" id="map_container">
+            <GoogleMap
+                zoom={9}
+                center={center}
+                mapContainerClassName="map-container"
+                onClick={(event) => {
+                    saveLocation(event.latLng.lat(), event.latLng.lng())
+                }}
+            >
 
-                </GoogleMap>
+            </GoogleMap>
 
-            </div>
         </div>
     );
 }
