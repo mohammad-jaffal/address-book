@@ -7,8 +7,8 @@ import axios from 'axios';
 const AddContact = () => {
 
     var contact_name = useRef(null);
-    var lat_input = useRef(null);
-    var lng_input = useRef(null);
+    var contact_lat = useRef(null);
+    var contact_lng = useRef(null);
     var contact_phone = useRef(null);
     var contact_email = useRef(null);
     var contact_status = useRef(null);
@@ -39,24 +39,63 @@ const AddContact = () => {
     }
 
 
-    // lat_input.value = localStorage.getItem('c_lat');
-    // lat_input.value = localStorage.getItem('c_lng');
+    // contact_lat.value = localStorage.getItem('c_lat');
+    // contact_lat.value = localStorage.getItem('c_lng');
 
-    // lat_input.current.value = 'c_lat';
-    // lng_input.current.value = 'c_lng';
+    // contact_lat.current.value = 'c_lat';
+    // contact_lng.current.value = 'c_lng';
     useEffect(() => {
-        lat_input.current.value = localStorage.getItem('c_lat');
-        lng_input.current.value = localStorage.getItem('c_lng');
-    }, [lat_input, lng_input]);
+        contact_lat.current.value = localStorage.getItem('c_lat');
+        contact_lng.current.value = localStorage.getItem('c_lng');
+    }, [contact_lat, contact_lng]);
 
-function addContactFunction(){
-    console.log(contact_name.current.value);
-    
-    localStorage.setItem('c_lat', '');
-    localStorage.setItem('c_lng', '');
+    async function addContactFunction() {
+        console.log(contact_name.current.value);
+        if (contact_name.current.value == "" || contact_phone.current.value == "" || contact_email.current.value == "" || contact_lat.current.value == "") {
+            alert('Fill all!');
+            console.log(contact_status.current.value);
+        } else {
 
-    document.location.reload();
-}
+
+
+            const params = new URLSearchParams();
+            params.append('name', contact_name.current.value);
+            params.append('phone_number', contact_phone.current.value);
+            params.append('status', contact_status.current.value);
+            params.append('email', contact_email.current.value);
+            params.append('location[0]', contact_lat.current.value);
+            params.append('location[1]', contact_lng.current.value);
+            params.append('user_id', user_id);
+
+            await axios.post(`http://localhost:3000/add-contact`,
+                params,
+                { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' })
+                .then(res => {
+                    // if login
+                    if (res['status'] == 200) {
+                        alert('done');
+                    }
+                })
+                .catch(err => {
+                    alert(err.response.data['message']);
+                })
+
+
+
+
+
+
+
+
+
+
+
+            localStorage.setItem('c_lat', '');
+            localStorage.setItem('c_lng', '');
+            document.location.reload();
+        }
+
+    }
 
 
 
@@ -96,8 +135,8 @@ function addContactFunction(){
                     </div>
                     <div className="form-group">
                         <label>Location:</label>
-                        <input ref={lat_input} className="location-show" readOnly />
-                        <input ref={lng_input} className="location-show" readOnly />
+                        <input ref={contact_lat} className="location-show" readOnly />
+                        <input ref={contact_lng} className="location-show" readOnly />
                         <button onClick={() => { document.location.href = '/pick-location' }}>Pick</button>
                     </div>
                     <div className="form-group">

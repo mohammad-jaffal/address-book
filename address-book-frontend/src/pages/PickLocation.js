@@ -26,9 +26,6 @@ export default PickLocation;
 
 function Map() {
 
-    var lat_input = document.getElementById('lat_input');
-    var lng_input = document.getElementById('lng_input');
-    
     const center = useMemo(() => ({ lat: 33.888630, lng: 35.422281 }), []);
     function saveLocation(c_lat, c_lng) {
         console.log(c_lat)
