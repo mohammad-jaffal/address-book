@@ -15,6 +15,7 @@ const Home = () => {
 
     const [user_id, setUserId] = useState('');
     const [contacts, setContacts] = useState('');
+    const [temp_contacts, setTempContacts] = useState('');
 
 
 
@@ -54,6 +55,7 @@ const Home = () => {
                 // if login
                 if (res['status'] == 200) {
                     setContacts(res.data);
+                    setTempContacts(res.data);
                     // console.log(res.data);
                 }
             })
@@ -69,9 +71,37 @@ const Home = () => {
     }
 
 
+
+
+
+
+    async function deleteContact(c_id) {
+        console.log('deleteing ' + c_id);
+
+        const params = new URLSearchParams();
+        params.append('contact_id', c_id);
+
+        await axios.post(`http://localhost:3000/delete-contact`,
+            params,
+            { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' })
+            .then(res => {
+                // if login
+                if (res['status'] == 200) {
+                    alert('done');
+                    console.log(res)
+                    // document.location.reload();
+                }
+            })
+            .catch(err => {
+                alert(err.response.data['message']);
+            })
+
+    }
+
+
     useEffect(() => {
         // console.log(user_id);
-        validateUser(); 
+        validateUser();
         fetchContacts();
     }, [user_id]);
 
@@ -90,6 +120,7 @@ const Home = () => {
                                 status={value['status']}
                                 contact_id={value['_id']}
                                 location={value['location']}
+                                del_fn={() => { deleteContact(value['_id']) }}
                             />
                         )
                     })}

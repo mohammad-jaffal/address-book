@@ -26,8 +26,9 @@ exports.getContactsByUserId = (req, res) => {
   };
 
   exports.deleteContact = (req, res) => {
-    const contact_id = req.body.contact_id;
-    Contact.find({contact_id}).deleteOne()
+    const id = req.body.contact_id;
+    console.log(id)
+    Contact.findOneAndDelete({_id: id})
         .then((result) => {
             res.send(result);
         })
