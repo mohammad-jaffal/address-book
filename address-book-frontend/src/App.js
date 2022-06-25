@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import AddContact from './pages/AddContact';
+import ViewLocation from './pages/ViewLocation';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home />} />
           <Route path="/add-contact" element={<AddContact />} />
+          <Route path="/view-location" element={<ViewLocation />} />
         </Routes>
     </BrowserRouter>
   );

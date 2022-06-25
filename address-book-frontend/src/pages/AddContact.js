@@ -15,7 +15,7 @@ const AddContact = () => {
                     </div>
                     <div className="form-group">
                         <label>Phone Number:</label>
-                        <input type="Number" className="form-control" required />
+                        <input type="text" className="form-control" required />
                     </div>
                     <div className="form-group">
                         <label>Email:</label>

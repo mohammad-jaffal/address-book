@@ -6,7 +6,9 @@ const ContactItem = () => {
 
 
 
-
+function viewmapFunction(){
+    document.location.href='/view-location';
+}
 
 
     return (
@@ -19,7 +21,9 @@ const ContactItem = () => {
             </div>
             <div className="location-container">
                 <i className="delete-icon">❌</i>
-                <i className="map-icon">🗺️</i>
+                <i className="map-icon" onClick={()=>{
+                    viewmapFunction()
+                }}>🗺️</i>
             </div>
 
         </div>

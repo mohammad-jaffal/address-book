@@ -112,7 +112,6 @@
 .addcontact-body-container {
   margin-top: 50px;
   background-color: rgba(0, 255, 255, 0.1);
-  width: 80%;
   align-self: center;
   display: flex;
   flex-wrap: wrap;
@@ -125,7 +124,6 @@
 .login-body-container {
   margin-top: 50px;
   background-color: rgba(0, 255, 255, 0.1);
-  width: 80%;
   align-self: center;
   display: flex;
   flex-wrap: wrap;
