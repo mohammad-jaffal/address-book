@@ -26,6 +26,8 @@ function Map() {
     const center = useMemo(() => ({ lat: 33.888630, lng: 35.422281 }), []);
     function saveLocation(c_lat, c_lng) {
  
+        // console.log(c_lat+" - "+c_lng)
+
         document.getElementById("show_lat").setAttribute('value', c_lat);
         document.getElementById("show_lng").setAttribute('value', c_lng);
 

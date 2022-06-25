@@ -68,14 +68,18 @@ const AddContact = () => {
                     // if login
                     if (res['status'] == 200) {
                         console.log("success");
+                        contact_name.current.value = '';
+                        contact_phone.current.value = '';
+                        contact_email.current.value = '';
+                        document.getElementById("show_lat").setAttribute('value', '');
+                        document.getElementById("show_lng").setAttribute('value', '');
+
                     }
                 })
                 .catch(err => {
                     alert(err.response.data['message']);
                 })
-
         }
-
     }
 
 
@@ -106,7 +110,7 @@ const AddContact = () => {
                     </div>
                     <div className="form-group">
                         <label>Status:</label>
-                        <select ref={contact_status} className="form-control">
+                        <select ref={contact_status} id={"status_select"} className="form-control">
                             <option value="Single  ">Single </option>
                             <option value="Married">Married</option>
                             <option value="Separated ">Separated </option>
