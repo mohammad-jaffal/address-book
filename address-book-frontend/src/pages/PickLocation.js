@@ -1,10 +1,10 @@
-import { React, useMemo, useState, useEffect } from "react";
+import { React, useMemo, useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
 
 
-const ViewLocation = () => {
+const PickLocation = () => {
     const { isLoaded } = useLoadScript({ googleMapsApiKey: "AIzaSyBS8VZXIVu9EOghzUMzzI9kwxq92G7Ckb4" });
 
     while (!isLoaded) {
@@ -21,18 +21,23 @@ const ViewLocation = () => {
     );
 };
 
-export default ViewLocation;
-
+export default PickLocation;
 
 
 function Map() {
-    var contact_lng = Number(localStorage.getItem('lng'));
-    var contact_lat = Number(localStorage.getItem('lat'));
 
-    console.log(contact_lng + ' - ' + contact_lat);
-
+    var lat_input = document.getElementById('lat_input');
+    var lng_input = document.getElementById('lng_input');
+    
     const center = useMemo(() => ({ lat: 33.888630, lng: 35.422281 }), []);
-
+    function saveLocation(c_lat, c_lng) {
+        console.log(c_lat)
+        console.log(c_lng)
+        localStorage.setItem('c_lat', c_lat);
+        localStorage.setItem('c_lng', c_lng);
+        document.location.href='/add-contact';
+        
+       }
 
     return (
         <div className='global-container'>
@@ -42,12 +47,17 @@ function Map() {
                     zoom={9}
                     center={center}
                     mapContainerClassName="map-container"
+                    onClick={(event) => {
+                        saveLocation(event.latLng.lat(), event.latLng.lng())
+                        // console.log("latitide = ", event.latLng.lat());
+                        // console.log("longitude = ", event.latLng.lng());
+                    }}
                 >
 
-                    <Marker position={{ lat: contact_lat, lng: contact_lng }} />
                 </GoogleMap>
 
             </div>
         </div>
     );
 }
+

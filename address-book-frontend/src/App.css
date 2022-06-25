@@ -145,6 +145,11 @@
 }
 
 
+.location-show{
+  width: 150px;
+  pointer-events: none;
+  cursor: default;
+}
 
 
 
