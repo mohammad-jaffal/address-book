@@ -2,6 +2,7 @@ import { React, useMemo, useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 
@@ -61,12 +62,15 @@ var contact_lat = Number(localStorage.getItem('lat'));
 
 function Map() {
 
-    console.log(contact_lng + ' - ' + contact_lat);
+    // console.log(contact_lng + ' - ' + contact_lat);
 
     const center = useMemo(() => ({ lat: 33.888630, lng: 35.422281 }), []);
 
+
+
+
     return (
-        <div className='global-container'>
+        <div className='global-container' id="home_map_container">
             {/* <Navbar /> */}
             <div className="viewmap-body-container">
                 <GoogleMap
@@ -79,7 +83,7 @@ function Map() {
 
             </div>
             
-            <button className="back-btn">Back</button>
+            <Link to={-1}><button className="back-btn">Back</button></Link>
         </div>
     );
 }

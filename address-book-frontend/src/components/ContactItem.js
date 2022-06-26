@@ -2,15 +2,11 @@ import React from "react";
 import axios from 'axios';
 
 
-const ContactItem = ({ name, phone, email, status, location, del_fn}) => {
+const ContactItem = ({ name, phone, email, status, location, del_fn, view_fn}) => {
 
 // console.log(location)
 
-function viewmapFunction(){
-    localStorage.setItem('lat', location[0]);
-    localStorage.setItem('lng', location[1]);
-    document.location.href='/view-location';
-}
+
 
 
     return (
@@ -23,9 +19,7 @@ function viewmapFunction(){
             </div>
             <div className="location-container">
                 <i className="delete-icon" onClick={del_fn}>❌</i>
-                <i className="map-icon" onClick={()=>{
-                    viewmapFunction()
-                }}>🗺️</i>
+                <i className="map-icon" onClick={view_fn}>🗺️</i>
             </div>
 
         </div>

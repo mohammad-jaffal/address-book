@@ -39,7 +39,7 @@ const Home = () => {
     }
 
 
-
+    // fetch all contacts for a user
     const fetchContacts = async () => {
         try {
             const params = new URLSearchParams();
@@ -66,7 +66,7 @@ const Home = () => {
     }
 
 
-
+    // delete a contact by contact id
     async function deleteContact(c_id) {
         console.log('deleteing ' + c_id);
 
@@ -81,8 +81,8 @@ const Home = () => {
                 if (res['status'] == 200) {
 
                     var temp = [];
-                    for(var i = 0 ; i < contacts.length ; i++){
-                        if(contacts[i]['_id']!=c_id){
+                    for (var i = 0; i < contacts.length; i++) {
+                        if (contacts[i]['_id'] != c_id) {
                             temp[temp.length] = contacts[i];
                         }
                         setContacts(temp);
@@ -98,7 +98,7 @@ const Home = () => {
 
 
 
-
+    // show contacts who's info contains what the user types
     function filterContacts() {
         var temp = []
         setFilteredContacts([])
@@ -117,6 +117,13 @@ const Home = () => {
         }
     }
 
+    // navigate to the map page and show contact marker
+    function viewmapFunction(l_lat, l_lng) {
+        localStorage.setItem('lat', l_lat);
+        localStorage.setItem('lng', l_lng);
+        document.location.href = '/view-location';
+    }
+
 
     useEffect(() => {
         validateUser();
@@ -127,7 +134,7 @@ const Home = () => {
     try {
         return (
             <div className='global-container'>
-                <Navbar page={'home'}/>
+                <Navbar page={'home'} />
                 <input type={"text"} className={"filter-input"} ref={filter_input} placeholder={"Search"} onInput={() => { filterContacts() }} />
                 <div className="home-body-container">
 
@@ -142,6 +149,7 @@ const Home = () => {
                                 contact_id={value['_id']}
                                 location={value['location']}
                                 del_fn={() => { deleteContact(value['_id']) }}
+                                view_fn={() => { viewmapFunction(value['location'][0], value['location'][1]) }}
                             />
                         )
                     })}
@@ -153,7 +161,7 @@ const Home = () => {
 
     catch (err) {
         return (<div className='global-container'>
-            <Navbar page={'home'}/>
+            <Navbar page={'home'} />
             <div className="home-body-container">
                 <div className="surveys-container">Loading...</div>
             </div>

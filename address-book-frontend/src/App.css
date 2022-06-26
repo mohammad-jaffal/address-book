@@ -394,14 +394,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
 .back-btn{
   position: absolute;
   top: 62px;
@@ -412,6 +404,10 @@ body {
   border: none;
   font-size: 22px;
   cursor: pointer;
+}
+
+.back-btn:hover{
+  background-color: rgb(233, 233, 233);
 }
 
 
