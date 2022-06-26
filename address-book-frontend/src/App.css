@@ -402,11 +402,21 @@ body {
 
 
 
-
+.back-btn{
+  position: absolute;
+  top: 62px;
+  left: 10px;
+  height: 41px;
+  width: 168px;
+  background-color: white;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
 
 
 .viewmap-body-container {
-  height: 90vh;
+  height: 100vh;
   width: 100vw;
 }
 

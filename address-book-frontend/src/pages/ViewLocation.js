@@ -1,6 +1,6 @@
 import { React, useMemo, useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import axios from 'axios';
 
 
@@ -41,7 +41,7 @@ const ViewLocation = () => {
     while (!isLoaded) {
         return (
             <div className='global-container'>
-                <Navbar />
+                {/* <Navbar /> */}
                 <div>Loading...</div>
             </div>
         );
@@ -56,30 +56,30 @@ const ViewLocation = () => {
 export default ViewLocation;
 
 
+var contact_lng = Number(localStorage.getItem('lng'));
+var contact_lat = Number(localStorage.getItem('lat'));
 
 function Map() {
-    var contact_lng = Number(localStorage.getItem('lng'));
-    var contact_lat = Number(localStorage.getItem('lat'));
 
     console.log(contact_lng + ' - ' + contact_lat);
 
     const center = useMemo(() => ({ lat: 33.888630, lng: 35.422281 }), []);
 
-
     return (
         <div className='global-container'>
-            <Navbar />
+            {/* <Navbar /> */}
             <div className="viewmap-body-container">
                 <GoogleMap
                     zoom={9}
                     center={center}
                     mapContainerClassName="map-container"
                 >
-
-                    <Marker position={{ lat: contact_lat, lng: contact_lng }} />
+                    <MarkerF position={{ lat: contact_lat, lng: contact_lng }} />
                 </GoogleMap>
 
             </div>
+            
+            <button className="back-btn">Back</button>
         </div>
     );
 }
