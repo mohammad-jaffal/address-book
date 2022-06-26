@@ -96,6 +96,7 @@ const AddContact = () => {
             <Navbar />
             <div className="addcontact-body-container" id="add_body">
                 <div className="addcontact-form-container">
+                    <p>Add Contact</p>
                     <div className="addcontact-group">
                         <label>Name:</label>
                         <input type="text" ref={contact_name} className="addcontact-input" required />
@@ -118,8 +119,9 @@ const AddContact = () => {
                             <option value="Widowed ">Widowed </option>
                         </select>
                     </div>
-                    <div className="addcontact-group">
+                    <div className="showlocation-group">
                         <label>Location:</label>
+                        <div>
                         <input ref={contact_lat} id={'show_lat'} className="location-show" readOnly />
                         <input ref={contact_lng} id={'show_lng'} className="location-show" readOnly />
                         <button className="pick-contact-btn" onClick={() => {
@@ -127,10 +129,9 @@ const AddContact = () => {
                             document.getElementById("map_container").style.display = "block";
                         }}>Pick</button>
                     </div>
-                    <div className="addcontact-group">
+                    </div>
                         <button className="add-contact-btn" onClick={() => { addContactFunction() }}>AddContact</button>
                     </div>
-                </div>
             </div>
             <PickLocation/>
         </div>
