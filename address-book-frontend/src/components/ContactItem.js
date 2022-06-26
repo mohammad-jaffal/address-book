@@ -19,7 +19,7 @@ function viewmapFunction(){
                 <p className="contact-name">{name}</p>
                 <p className="contact-info">📞 {phone}</p>
                 <p className="contact-info">✉️ {email}</p>
-                <p className="contact-info"> 🗿 {status}</p>
+                <p className="contact-info">&nbsp;🗿 {status}</p>
             </div>
             <div className="location-container">
                 <i className="delete-icon" onClick={del_fn}>❌</i>

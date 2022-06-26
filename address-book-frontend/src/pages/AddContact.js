@@ -96,21 +96,21 @@ const AddContact = () => {
             <Navbar />
             <div className="addcontact-body-container" id="add_body">
                 <div className="addcontact-form-container">
-                    <div className="form-group">
+                    <div className="addcontact-group">
                         <label>Name:</label>
-                        <input type="text" ref={contact_name} className="form-control" required />
+                        <input type="text" ref={contact_name} className="addcontact-input" required />
                     </div>
-                    <div className="form-group">
+                    <div className="addcontact-group">
                         <label>Phone Number:</label>
-                        <input type="text" ref={contact_phone} className="form-control" required />
+                        <input type="text" ref={contact_phone} className="addcontact-input" required />
                     </div>
-                    <div className="form-group">
+                    <div className="addcontact-group">
                         <label>Email:</label>
-                        <input type="Email" ref={contact_email} className="form-control" required />
+                        <input type="Email" ref={contact_email} className="addcontact-input" required />
                     </div>
-                    <div className="form-group">
+                    <div className="addcontact-group">
                         <label>Status:</label>
-                        <select ref={contact_status} id={"status_select"} className="form-control">
+                        <select ref={contact_status} id={"status_select"} className="addcontact-input">
                             <option value="Single  ">Single </option>
                             <option value="Married">Married</option>
                             <option value="Separated ">Separated </option>
@@ -118,17 +118,17 @@ const AddContact = () => {
                             <option value="Widowed ">Widowed </option>
                         </select>
                     </div>
-                    <div className="form-group">
+                    <div className="addcontact-group">
                         <label>Location:</label>
                         <input ref={contact_lat} id={'show_lat'} className="location-show" readOnly />
                         <input ref={contact_lng} id={'show_lng'} className="location-show" readOnly />
-                        <button onClick={() => {
+                        <button className="pick-contact-btn" onClick={() => {
                             document.getElementById("add_body").style.display = "none";
                             document.getElementById("map_container").style.display = "block";
                         }}>Pick</button>
                     </div>
-                    <div className="form-group">
-                        <button onClick={() => { addContactFunction() }}>AddContact</button>
+                    <div className="addcontact-group">
+                        <button className="add-contact-btn" onClick={() => { addContactFunction() }}>AddContact</button>
                     </div>
                 </div>
             </div>
