@@ -9,7 +9,7 @@ const Login = () => {
         var email = document.getElementById("li_email").value;
         var password = document.getElementById("li_password").value;
         if (email == "" || password == "") {
-            alert('Fill All')
+            alert('Fill All');
         } else {
             
             const params = new URLSearchParams();
@@ -36,20 +36,15 @@ const Login = () => {
         <div className='global-container'>
             <div className="login-body-container">
                 <div id="login_form" className="login-form-container">
-                    <div className="form-group">
-                        <label>Email:</label>
-                        <input type="text" id="li_email" className="form-control" required />
-                    </div>
-                    <div className="form-group">
-                        <label>Password:</label>
-                        <input type="password" id="li_password" className="form-control" required />
-                    </div>
-                    <div className="form-group">
+                        <p>Login</p>
+                        <input type="text" id="li_email" className="login-input" placeholder="Email" required />
+                    
+                        <input type="password" id="li_password" className="login-input" placeholder="Password" required />
+                    
                         <button className='li-btn' onClick={() => { loginFunction() }}>Login</button>
-                    </div>
-                    <div className="form-group">
-                        <Link to={"./signup"}>Create account</Link>
-                    </div>
+                   
+                        <Link className="auth-link" to={"./signup"}>Create account</Link>
+                    
                 </div>
             </div>
         </div>

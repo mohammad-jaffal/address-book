@@ -2,12 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
+body{
+  background-color: rgba(243, 235, 246, 255);
+}
 
 .global-container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   box-sizing: border-box;
   font-family: sans-serif;
   display: flex;
@@ -52,7 +56,6 @@
 }
 
 .home-body-container {
-  margin-top: 50px;
   /* background-color: rgba(0, 255, 255, 0.1); */
   width: 80%;
   align-self: center;
@@ -64,13 +67,34 @@
 }
 
 
+
+.filter-input {
+  margin-top: 100px;
+  margin-bottom: 80px;
+  width: 50%;
+  height: 40px;
+  border: 1px solid rgba(135, 109, 150, 255);
+  border-radius: 20px;
+  background-color: rgba(250, 250, 250, 255);
+  text-align: center;
+  font-size: 20px;
+  color: rgba(135, 109, 150, 255);
+  align-self: center;
+}
+
+.filter-input::placeholder {
+  color: rgba(135, 109, 150, 255);
+}
+
+
 .contact-item {
   width: 300px;
   height: 180px;
-  background-color: rgba(137, 43, 226, 0.116);
+  background-color: white;
   display: flex;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 10px;;
+  box-shadow: 0 0 3px #ccc;
 }
 
 .info-container {
@@ -88,7 +112,6 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-end;
-
 }
 
 .map-icon {
@@ -107,6 +130,9 @@
 .contact-name {
   font-size: 22px;
 }
+.contact-info {
+  /* font-size: 22px; */
+}
 
 
 .addcontact-body-container {
@@ -123,14 +149,79 @@
 
 
 .login-body-container {
-  margin-top: 50px;
-  background-color: rgba(0, 255, 255, 0.1);
+  margin-top: 30vh;
   align-self: center;
+}
+
+.signup-body-container {
+  margin-top: 20vh;
+  align-self: center;
+}
+
+.login-form-container {
+
   display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
+  flex-direction: column;
   justify-content: center;
-  padding-bottom: 100px;
+  align-items: center;
+  width: 400px;
+  height: fit-content;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 255);
+  border-radius: 20px;
+  box-shadow: 0 0 20px #ccc;
+  /* color: white; */
+}
+
+.login-form-container>p {
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: rgba(135, 109, 150, 255);
+}
+
+
+.login-input {
+  width: 90%;
+  height: 40px;
+  border: 1px solid rgba(135, 109, 150, 255);
+  border-radius: 20px;
+  background-color: rgba(250, 250, 250, 255);
+  text-align: center;
+  font-size: 20px;
+  color: rgba(135, 109, 150, 255);
+  margin-bottom: 30px;
+}
+
+.login-input::placeholder {
+  color: rgba(135, 109, 150, 255);
+}
+
+
+.li-btn {
+  width: 110px;
+  height: 35px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(135, 109, 150, 255);
+  color: rgba(250, 250, 250, 255);
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.li-btn:active {
+  margin-top: 1px;
+  margin-bottom: 29px;
+}
+
+.auth-link {
+  text-decoration: none;
+  font-size: 18px;
+  color: rgba(159, 144, 171, 255);
+  margin-bottom: 40px;
 }
 
 
@@ -145,14 +236,14 @@
 }
 
 
-.location-show{
+.location-show {
   width: 150px;
   pointer-events: none;
   cursor: default;
 }
 
 
-#map_container{
+#map_container {
   display: none;
 }
 

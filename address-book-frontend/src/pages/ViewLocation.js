@@ -9,7 +9,6 @@ const ViewLocation = () => {
     const { isLoaded } = useLoadScript({ googleMapsApiKey: "AIzaSyBS8VZXIVu9EOghzUMzzI9kwxq92G7Ckb4" });
 
 
-
     const token = localStorage.getItem('token');
 
 

@@ -2,7 +2,7 @@ import React from "react";
 import axios from 'axios';
 
 
-const ContactItem = ({ name, phone, email, status, contact_id, location, del_fn}) => {
+const ContactItem = ({ name, phone, email, status, location, del_fn}) => {
 
 // console.log(location)
 
@@ -17,9 +17,9 @@ function viewmapFunction(){
         <div className='contact-item'>
             <div className="info-container">
                 <p className="contact-name">{name}</p>
-                <p>📞 {phone}</p>
-                <p>✉️ {email}</p>
-                <p>🗿 {status}</p>
+                <p className="contact-info">📞 {phone}</p>
+                <p className="contact-info">✉️ {email}</p>
+                <p className="contact-info"> 🗿 {status}</p>
             </div>
             <div className="location-container">
                 <i className="delete-icon" onClick={del_fn}>❌</i>

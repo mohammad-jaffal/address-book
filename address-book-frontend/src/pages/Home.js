@@ -111,7 +111,7 @@ const Home = () => {
             ) {
                 if (contact in temp) { } else {
                     temp[temp.length] = contact;
-                    setFilteredContacts(temp)
+                    setFilteredContacts(temp);
                 }
             }
         }
@@ -128,7 +128,7 @@ const Home = () => {
         return (
             <div className='global-container'>
                 <Navbar />
-                <input type={"text"} ref={filter_input} onInput={() => { filterContacts() }} />
+                <input type={"text"} className={"filter-input"} ref={filter_input} placeholder={"Search"} onInput={() => { filterContacts() }} />
                 <div className="home-body-container">
 
                     {filtered_contacts.map((value, index) => {

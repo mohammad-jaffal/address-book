@@ -55,30 +55,15 @@ const Signup = () => {
 
     return (
         <div className='global-container'>
-            <div className="login-body-container">
+            <div className="signup-body-container">
                 <div id="login_form" className="login-form-container">
-                    <div className="form-group">
-                        <label>Name:</label>
-                        <input type="text" id="su_name" className="form-control" required />
-                    </div>
-                    <div className="form-group">
-                        <label>Email:</label>
-                        <input type="Email" id="su_email" className="form-control" required />
-                    </div>
-                    <div className="form-group">
-                        <label>Password:</label>
-                        <input type="password" id="su_password" className="form-control" required />
-                    </div>
-                    <div className="form-group">
-                        <label>Confirm Password:</label>
-                        <input type="password" id="su_confirm_password" className="form-control" required />
-                    </div>
-                    <div className="form-group">
-                        <button className='li-btn' onClick={() => { signupFunction() }}>SignUp</button>
-                    </div>
-                    <div className="form-group">
-                        <Link to={-1}>Already have account</Link>
-                    </div>
+                    <p>Signup</p>
+                    <input type="text" id="su_name" className="login-input" placeholder="name" required />
+                    <input type="Email" id="su_email" className="login-input" placeholder="Email" required />
+                    <input type="password" id="su_password" className="login-input" placeholder="Password" required />
+                    <input type="password" id="su_confirm_password" className="login-input" placeholder="Confirm Password" required />
+                    <button className='li-btn' onClick={() => { signupFunction() }}>SignUp</button>
+                    <Link className="auth-link" to={-1}>Already have account</Link>
                 </div>
             </div>
         </div>
