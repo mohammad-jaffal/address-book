@@ -121,13 +121,13 @@ const Home = () => {
     useEffect(() => {
         validateUser();
         fetchContacts();
-        console.log(contacts);
+        // console.log(contacts);
     }, [user_id]);
 
     try {
         return (
             <div className='global-container'>
-                <Navbar />
+                <Navbar page={'home'}/>
                 <input type={"text"} className={"filter-input"} ref={filter_input} placeholder={"Search"} onInput={() => { filterContacts() }} />
                 <div className="home-body-container">
 
@@ -153,7 +153,7 @@ const Home = () => {
 
     catch (err) {
         return (<div className='global-container'>
-            <Navbar />
+            <Navbar page={'home'}/>
             <div className="home-body-container">
                 <div className="surveys-container">Loading...</div>
             </div>

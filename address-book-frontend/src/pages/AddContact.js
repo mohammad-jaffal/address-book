@@ -93,24 +93,24 @@ const AddContact = () => {
 
     return (
         <div className='global-container'>
-            <Navbar />
+            <Navbar page={'add'}/>
             <div className="addcontact-body-container" id="add_body">
                 <div className="addcontact-form-container">
                     <p>Add Contact</p>
                     <div className="addcontact-group">
-                        <label>Name:</label>
+                        <label className="add-contact-label">Name:</label>
                         <input type="text" ref={contact_name} className="addcontact-input" required />
                     </div>
                     <div className="addcontact-group">
-                        <label>Phone Number:</label>
+                        <label className="add-contact-label">Phone Number:</label>
                         <input type="text" ref={contact_phone} className="addcontact-input" required />
                     </div>
                     <div className="addcontact-group">
-                        <label>Email:</label>
+                        <label className="add-contact-label">Email:</label>
                         <input type="Email" ref={contact_email} className="addcontact-input" required />
                     </div>
                     <div className="addcontact-group">
-                        <label>Status:</label>
+                        <label className="add-contact-label">Status:</label>
                         <select ref={contact_status} id={"status_select"} className="addcontact-input">
                             <option value="Single  ">Single </option>
                             <option value="Married">Married</option>
@@ -120,7 +120,7 @@ const AddContact = () => {
                         </select>
                     </div>
                     <div className="showlocation-group">
-                        <label>Location:</label>
+                        <label className="add-contact-label">Location:</label>
                         <div>
                         <input ref={contact_lat} id={'show_lat'} className="location-show" readOnly />
                         <input ref={contact_lng} id={'show_lng'} className="location-show" readOnly />

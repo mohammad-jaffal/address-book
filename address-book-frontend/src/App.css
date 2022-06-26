@@ -27,16 +27,15 @@ body {
 
 
 
-
-
 .navbar {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(135, 109, 150, 255);
   display: flex;
   justify-content: space-between;
   padding-left: 10%;
   padding-right: 10%;
   color: white;
   height: 70px;
+  /* box-shadow: 0 0 px rgba(135, 109, 150, 255); */
 }
 
 .main-logo {
@@ -55,17 +54,26 @@ body {
   justify-content: center;
   align-items: center;
   gap: 40px;
+  
 }
 
 .navbar-li {
+  height: 50%;
   font-size: 18px;
-  vertical-align: middle;
   cursor: pointer;
   user-select: none;
   list-style-type: none;
+  font-weight: bold;
+  padding: 0 10px 0 10px;
+  border-radius: 10px;
 }
 
-
+.navbar-li>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
 
 
 
@@ -123,7 +131,6 @@ body {
   display: flex;
   padding: 10px;
   border-radius: 10px;
-  ;
   box-shadow: 0 0 3px #ccc;
 }
 
@@ -207,10 +214,17 @@ body {
   margin-bottom: 30px;
 }
 
+
+
 .addcontact-group {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+.add-contact-label{
+  color: rgba(135, 109, 150, 255);
+  font-size: 20px;
+  align-self: center;
 }
 
 .addcontact-input {
