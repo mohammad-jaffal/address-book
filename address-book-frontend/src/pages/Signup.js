@@ -19,11 +19,11 @@ const Signup = () => {
                 params.append('fullName', name);
                 params.append('email', email);
                 params.append('password', password);
-
+                // register the new user
                 await axios.post(`http://localhost:3000/auth/register`, params, { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }).then(async res => {
                     // if login
                     if (res['status'] == 200) {
-
+                        // automatically log in the user after signup
                         await axios.post(`http://localhost:3000/auth/sign_in`, params, { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }).then(res => {
                             // if login
                             if (res['status'] == 200) {
@@ -36,9 +36,6 @@ const Signup = () => {
                                 alert(err.response.data['message']);
                             })
 
-                        // save access token in local storage for later use
-                        // localStorage.setItem('token', res.data['token'])
-                        // document.location.href = "./home";
                     }
                 })
                     .catch(err => {

@@ -77,9 +77,9 @@ const Home = () => {
             params,
             { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' })
             .then(res => {
-                // if login
-                if (res['status'] == 200) {
 
+                if (res['status'] == 200) {
+                    // if delete api worked, remove the contact from the array to reload the component
                     var temp = [];
                     for (var i = 0; i < contacts.length; i++) {
                         if (contacts[i]['_id'] != c_id) {
@@ -163,7 +163,7 @@ const Home = () => {
         return (<div className='global-container'>
             <Navbar page={'home'} />
             <div className="home-body-container">
-                <div className="surveys-container">Loading...</div>
+                {/* <div className="surveys-container">Loading...</div> */}
             </div>
         </div>)
     }

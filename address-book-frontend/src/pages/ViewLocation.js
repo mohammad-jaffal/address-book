@@ -66,6 +66,9 @@ function Map() {
 
     const center = useMemo(() => ({ lat: 33.888630, lng: 35.422281 }), []);
 
+    setTimeout(() => {
+        document.getElementById("back_to_home").style.display = "block";
+    }, 500);
 
 
 
@@ -82,8 +85,8 @@ function Map() {
                 </GoogleMap>
 
             </div>
-            
-            <Link to={-1}><button className="back-btn">Back</button></Link>
+
+            <Link to={-1}><button className="back-btn" id="back_to_home" style={{ display: "none" }}>Back</button></Link>
         </div>
     );
 }

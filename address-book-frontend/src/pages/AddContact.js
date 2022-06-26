@@ -93,7 +93,7 @@ const AddContact = () => {
 
     return (
         <div className='global-container'>
-            <Navbar page={'add'}/>
+            <Navbar page={'add'} />
             <div className="addcontact-body-container" id="add_body">
                 <div className="addcontact-form-container">
                     <p>Add Contact</p>
@@ -122,18 +122,18 @@ const AddContact = () => {
                     <div className="showlocation-group">
                         <label className="add-contact-label">Location:</label>
                         <div>
-                        <input ref={contact_lat} id={'show_lat'} className="location-show" readOnly />
-                        <input ref={contact_lng} id={'show_lng'} className="location-show" readOnly />
-                        <button className="pick-contact-btn" onClick={() => {
-                            document.getElementById("add_body").style.display = "none";
-                            document.getElementById("map_container").style.display = "block";
-                        }}>Pick</button>
+                            <input ref={contact_lat} id={'show_lat'} className="location-show" readOnly />
+                            <input ref={contact_lng} id={'show_lng'} className="location-show" readOnly />
+                            <button className="pick-contact-btn" onClick={() => {
+                                document.getElementById("add_body").style.display = "none";
+                                document.getElementById("map_container").style.display = "block";
+                            }}>Pick</button>
+                        </div>
                     </div>
-                    </div>
-                        <button className="add-contact-btn" onClick={() => { addContactFunction() }}>AddContact</button>
-                    </div>
+                    <button className="add-contact-btn" onClick={() => { addContactFunction() }}>AddContact</button>
+                </div>
             </div>
-            <PickLocation/>
+            <PickLocation />
         </div>
     );
 };

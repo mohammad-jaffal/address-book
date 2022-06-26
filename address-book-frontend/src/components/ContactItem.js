@@ -2,9 +2,9 @@ import React from "react";
 import axios from 'axios';
 
 
-const ContactItem = ({ name, phone, email, status, location, del_fn, view_fn}) => {
+const ContactItem = ({ name, phone, email, status, location, del_fn, view_fn }) => {
 
-// console.log(location)
+    // console.log(location)
 
 
 
@@ -15,7 +15,7 @@ const ContactItem = ({ name, phone, email, status, location, del_fn, view_fn}) =
                 <p className="contact-name">{name}</p>
                 <p className="contact-info">📞 {phone}</p>
                 <p className="contact-info">✉️ {email}</p>
-                <p className="contact-info">&nbsp;🗿 {status}</p>
+                <p className="contact-info">🗿&nbsp;&nbsp;{status}</p>
             </div>
             <div className="location-container">
                 <i className="delete-icon" onClick={del_fn}>❌</i>

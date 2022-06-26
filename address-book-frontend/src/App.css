@@ -34,18 +34,19 @@ body {
   padding-left: 10%;
   padding-right: 10%;
   color: white;
-  height: 70px;
+  height: 75px;
   /* box-shadow: 0 0 px rgba(135, 109, 150, 255); */
 }
 
 .main-logo {
   height: 100%;
-  font-size: 30px;
+  font-size: 70px;
   font-weight: bold;
   user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 10px;
 }
 
 .navbar-menu {
@@ -58,13 +59,13 @@ body {
 }
 
 .navbar-li {
-  height: 50%;
+  /* height: 60%; */
   font-size: 18px;
   cursor: pointer;
   user-select: none;
   list-style-type: none;
   font-weight: bold;
-  padding: 0 10px 0 10px;
+  padding: 10px;
   border-radius: 10px;
 }
 
@@ -131,7 +132,7 @@ body {
   display: flex;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 3px #ccc;
+  box-shadow: 0 0 20px #ccc;
 }
 
 .info-container {
@@ -168,7 +169,7 @@ body {
   font-size: 22px;
   color: rgba(135, 109, 150, 255);
   font-weight: bold;
-  margin-left: 15px;
+  margin-left: 25px;
 }
 
 .contact-info {
@@ -224,6 +225,7 @@ body {
 .add-contact-label{
   color: rgba(135, 109, 150, 255);
   font-size: 20px;
+  font-weight: bold;
   align-self: center;
 }
 
@@ -404,6 +406,7 @@ body {
   border: none;
   font-size: 22px;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .back-btn:hover{
@@ -440,6 +443,6 @@ body {
 
 @media (max-width: 600px) {
   .navbar-menu {
-    gap: 20px;
+    gap: 5px;
   }
 }

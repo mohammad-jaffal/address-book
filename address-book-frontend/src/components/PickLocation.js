@@ -9,7 +9,7 @@ const PickLocation = () => {
 
     while (!isLoaded) {
         return (
-            <div/>
+            <div />
         );
     }
     return (
@@ -22,18 +22,17 @@ export default PickLocation;
 
 function Map() {
 
-    
+
     const center = useMemo(() => ({ lat: 33.888630, lng: 35.422281 }), []);
+
+    // save the coordinates and hide the map
     function saveLocation(c_lat, c_lng) {
- 
-        // console.log(c_lat+" - "+c_lng)
 
         document.getElementById("show_lat").setAttribute('value', (Math.round(c_lat * 100) / 100).toFixed(2));
         document.getElementById("show_lng").setAttribute('value', (Math.round(c_lng * 100) / 100).toFixed(2));
 
         document.getElementById("map_container").style.display = "none";
         document.getElementById("add_body").style.display = "flex";
-
 
     }
 

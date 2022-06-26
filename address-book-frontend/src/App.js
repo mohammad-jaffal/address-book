@@ -12,13 +12,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/add-contact" element={<AddContact />} />
-          <Route path="/view-location" element={<ViewLocation />} />
-          <Route path="/pick-location" element={<PickLocation />} />
-        </Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/add-contact" element={<AddContact />} />
+        <Route path="/view-location" element={<ViewLocation />} />
+        <Route path="/pick-location" element={<PickLocation />} />
+      </Routes>
     </BrowserRouter>
   );
 }
